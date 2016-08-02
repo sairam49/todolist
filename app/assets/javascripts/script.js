@@ -1,19 +1,14 @@
-angular.module('todo',['angular.filter'])
-.controller('MainCtrl',['$scope', function($scope){
+angular.module('todolist',['angular.filter','ngResource'])
+.controller('MainCtrl',['$scope','$resource',function($scope,$resource){
 
-$scope.todos = [];
-$scope.title = '';
-$scope.time = '';
-$scope.date = '';
-$scope.done = false;
+  Todolist = $resource("/todos/:id",{id: "@id"},{update:{method:"PUT"}});
+  $scope.todos = Todolist.query();
 
-function addTODO(){
-var object = {title: $scope.title,time: $scope.time,date: $scope.date};
-$scope.todos.push(object);
-$scope.title = '';
-$scope.time = '';
-$scope.date = '';
-}
+  $scope.addTodo = function(){
+     todolist = Todolist.save($scope.newTodo);
+     $scope.todos.push(todolist);
+     $scope.newTodo = {};
+     }
 
-$scope.addTODO =addTODO;
-}]);
+  }
+])

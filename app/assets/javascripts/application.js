@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require angular
+//= require angular-resource
 //= require angular-filter
 //= require jquery
 //= require jquery_ujs

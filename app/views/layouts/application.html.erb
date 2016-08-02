@@ -1,28 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="todo">
+<html ng-app="check">
 <head>
   <title>Todo</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.9/angular-filter.min.js"></script>
-  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-controller="MainCtrl">
-<h3>Your TODO's</h3>
-<ul ng-repeat="(key,value) in todos | groupBy: 'date'">
-{{key}}
-<li ng-repeat="todo in value">
-{{todo.title}}--{{todo.time}}
-</li>
-</ul>
+<body>
 
-<form ng-submit="addTODO()">
-<h3>ADD TODO</h3>
-<input type="text" ng-model="title">
-<input type="date" ng-model="date">
-<input type="time" ng-model="time">
-<input type="submit">
-</form>
+<%= yield %>
 
 </body>
 </html>
+
