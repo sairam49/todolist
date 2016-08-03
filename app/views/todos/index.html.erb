@@ -1,0 +1,81 @@
+<div  ng-controller="MainCtrl">
+<div class="top-nav">
+  <h4>TODO LIST </h4>
+</div>
+<div class="list">
+<button id="demo-menu-lower-right"
+        class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">list</i>
+</button>
+
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+    for="demo-menu-lower-right">
+  <li class="mdl-menu__item">Some Action</li>
+  <li class="mdl-menu__item">Yet Another Action</li>
+</ul>
+</div>
+
+
+
+
+<div class="display">
+  <ul ng-repeat="(key,value) in checks | groupBy: 'date'">
+    <div class="outer">
+      <p class="date">{{key}}</p>
+      <div class="border">
+     <li ng-repeat="check in value">
+       <div class="inner">
+
+         <div class="title" ng-class="{'done':check.done}" >
+           {{check.title}}
+         </div>
+
+         <div class="time">
+         {{check.time}}
+         <input type="checkbox" ng-model="check.done">
+         </div>
+
+       </div>
+     </li>
+     </div>
+     </div>
+  </ul>
+</div>
+
+
+
+
+<div class="position" ng-model="foo">
+<button id="demo-menu-top-right"
+  class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" ng-click="foo = !foo">
+  <i class="material-icons">add</i>
+</button>
+</div>
+
+<div ng-show="foo" class="form">
+    <form ng-submit="addCheck()" data-mdl-for="demo-menu-top-right" name="frm">
+      <div>
+        <label>Todo</label>
+        <input type="text" ng-model="newCheck.title" required>
+      </div>
+
+
+      <div>
+        <label> Date </label>
+        <input type='date' ng-model="newCheck.date" required >
+        </div>
+
+        <div class='input-group date' id='datetimepicker3'>
+             <input type='text' class="form-control" ng-model="newCheck.time" required/>
+                <span class="input-group-addon">
+                   <span class="glyphicon glyphicon-time"></span>
+                </span>
+        </div>
+
+      <div>
+        <input type="submit" value=" Add Todo" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-disabled="frm.$invalid" >
+      </div>
+    </form>
+ </div>
+
+</div>

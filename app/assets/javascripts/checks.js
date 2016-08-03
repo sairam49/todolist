@@ -1,6 +1,6 @@
 angular.module('check',["ngResource","angular.filter"])
 .controller('MainCtrl',['$scope','$resource',function($scope,$resource){
-
+  $scope.foo = false
   Check = $resource("/checks/:id", {id: "@id"},{update:{method:"PUT"}});
   $scope.checks= Check.query();
 
