@@ -1,23 +1,13 @@
+<%if user_signed_in?%>
 <div  ng-controller="MainCtrl">
-<div class="top-nav">
-  <h4>TODO LIST </h4>
-</div>
-<div class="list">
-<button id="demo-menu-lower-right"
-        class="mdl-button mdl-js-button mdl-button--icon">
-  <i class="material-icons">list</i>
-</button>
-
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-    for="demo-menu-lower-right">
-  <li class="mdl-menu__item">Some Action</li>
-  <li class="mdl-menu__item">Yet Another Action</li>
-</ul>
-</div>
-
-
-
-
+  <% if current_user.checks.count == 0 %>
+    <h5 class="alert alert-info direction"> Click below to add your Todo ! </h5>
+    <div class="message">
+      <div class="jumbotron">
+        <h3> Your Todo list is empty </h3>
+        </div>
+        </div>
+  <%else%>
 <div class="display">
   <ul ng-repeat="(key,value) in checks | groupBy: 'date'">
     <div class="outer">
@@ -31,8 +21,17 @@
          </div>
 
          <div class="time">
+           <div class="value">
          {{check.time}}
-         <input type="checkbox" ng-model="check.done">
+              </div>
+
+        <div class="round">
+          <div class="roundedOne">
+            <input type="checkbox" value="None" id="{{key}}{{$index}}" name="check" ng-click="updateCheck(check.id)" ng-checked="check.done" />
+            <label for="{{key}}{{$index}}"></label>
+         </div>
+         </div>
+
          </div>
 
        </div>
@@ -41,8 +40,7 @@
      </div>
   </ul>
 </div>
-
-
+<%end%>
 
 
 <div class="position" ng-model="foo">
@@ -71,7 +69,6 @@
                    <span class="glyphicon glyphicon-time"></span>
                 </span>
         </div>
-
       <div>
         <input type="submit" value=" Add Todo" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-disabled="frm.$invalid" >
       </div>
@@ -79,3 +76,7 @@
  </div>
 
 </div>
+
+<%else%>
+  <h3> Login to Create your Todo List </h3>
+<%end%>

@@ -1,9 +1,9 @@
 class ChecksController < ApplicationController
-
+  before_action :authenticate_user!
   respond_to :json
 
   def index
-    respond_with Check.all
+    respond_with current_user.checks.all
   end
 
   def show
@@ -11,11 +11,11 @@ class ChecksController < ApplicationController
   end
 
   def create
-    respond_with Check.create(check_params)
+    respond_with Check.create(check_params.merge(user_id: current_user.id))
   end
 
   def update
-    respond_with Check.update(params[:id],params[:entry])
+    respond_with Check.update(params[:id],check_params)
   end
 
   def destroy
@@ -25,6 +25,6 @@ class ChecksController < ApplicationController
   private
 
   def check_params
-    params.fetch(:check,{}).permit(:title,:time,:date)
+    params.fetch(:check,{}).permit(:title,:time,:date,:done,:user_id)
   end
 end

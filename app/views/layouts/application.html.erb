@@ -9,6 +9,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="top-nav">
+  <h4>TODO LIST </h4>
+</div>
+<div class="list">
+<button id="demo-menu-lower-right"
+        class="mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">list</i>
+</button>
+
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+    for="demo-menu-lower-right">
+  <% if user_signed_in? %>
+    <li class="mdl-menu__item"><%= link_to 'Edit profile', edit_user_registration_path %></li>
+    <li class="mdl-menu__item"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+  <% else %>
+    <li class="mdl-menu__item"><%= link_to "Sign Up", new_user_registration_path %></li>
+    <li class="mdl-menu__item"><%= link_to "Login", new_user_session_path %></li>
+  <%end%>
+</ul>
+</div>
 
 <%= yield %>
 
