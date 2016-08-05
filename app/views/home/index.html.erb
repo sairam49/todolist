@@ -1,9 +1,40 @@
 <h1>Add Todo</h1>
 <div ng-controller="MainCtrl">
 <form ng-submit="addCheck()">
-  <input type="text" ng-model="newCheck.title">
-  <input type="date" ng-model="newCheck.date" placeholder="<%= Time.now.strftime("%m/%d/%Y") %>">
-  <input type="time" ng-model="newCheck.time">
+  <input type="text" ng-model="newCheck.title"><br/>
+
+
+  <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' datepicker ng-model="newCheck.date" class="form-control" required />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' timepicker ng-model="newCheck.time" class="form-control" required />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{newCheck.time}}----{{newCheck.date}}
+</div>
+
+
   <input type="submit">
   </form>
 
@@ -15,4 +46,4 @@
 <button type="button" ng-click="deleteCheck($index)">Done</button>
 </li>
 </ul>
-  </div>
+</div>

@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
 //= require angular
 //= require angular-resource
 //= require angular-filter
+//= require moment
+//= require bootstrap-datetimepicker
 //= require material
-//= require jquery
-//= require bootstrap-sprockets
-//= require jquery_ujs
+//= require pickers
 //= require_tree .

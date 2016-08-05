@@ -6,6 +6,9 @@ gem 'material_design_lite-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'haml', '~> 4.0', '>= 4.0.7'
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
